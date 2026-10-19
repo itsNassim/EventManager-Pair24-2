@@ -43,19 +43,11 @@ def create_event(
     "/",
     response_model=list[EventSchema]
 )
-def list_events(
-    search: str | None = Query(default=None),
-    db: Session = Depends(get_db)
-):
-    query = db.query(Event)
-
-    if search:
-        query = query.filter(
-            Event.title.ilike(f"%{search}%")
-        )
-
-    return query.order_by(Event.date).all()
-
+def list_events(location: Optional[str] = None, db: Session = Depends(get_db)):
+       query = db.query(Event)
+       if location:
+           query = query.filter(Event.location.ilike(f"%{location}%"))
+       return query.all()
 
 @router.get(
     "/{event_id}",
