@@ -7,7 +7,7 @@ from ..database import get_db
 from ..models import Event
 from ..schemas import Event as EventSchema
 from ..schemas import EventCreate, EventUpdate
-
+from typing import Optional
 
 router = APIRouter(
     prefix="/events",
@@ -43,11 +43,17 @@ def create_event(
     "/",
     response_model=list[EventSchema]
 )
-def list_events(location: Optional[str] = None, db: Session = Depends(get_db)):
-       query = db.query(Event)
-       if location:
-           query = query.filter(Event.location.ilike(f"%{location}%"))
-       return query.all()
+def list_events(
+    location: Optional[str] = None,
+    title: Optional[str] = None,
+    db: Session = Depends(get_db),
+):
+    query = db.query(Event)
+    if location:
+        query = query.filter(Event.location.ilike(f"%{location}%"))
+    if title:
+        query = query.filter(Event.title.ilike(f"%{title}%"))
+    return query.all()
 
 @router.get(
     "/{event_id}",
