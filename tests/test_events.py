@@ -53,3 +53,18 @@ def test_invalid_capacity_raises_validation_error(bad_capacity):
 def test_filter_by_title_is_case_insensitive(prepopulated_event_store):
     result = filter_events_by_title(prepopulated_event_store, "PYTHON")
     assert len(result) == 2
+
+
+def test_empty_location_returns_all_events(prepopulated_event_store):
+    result = filter_events_by_location(prepopulated_event_store, "")
+    assert len(result) == 3
+
+
+def test_empty_title_returns_all_events(prepopulated_event_store):
+    result = filter_events_by_title(prepopulated_event_store, "")
+    assert len(result) == 3
+
+
+def test_filter_by_location_is_case_insensitive(prepopulated_event_store):
+    result = filter_events_by_location(prepopulated_event_store, "CoNsTaNtInE")
+    assert len(result) == 2

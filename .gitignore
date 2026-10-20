@@ -13,3 +13,6 @@ events.db
 
 .vscode/
 .idea/
+
+.EventManager-Pair24/
+pytest.ini
