@@ -1,15 +1,4 @@
-<html><body><h1>app/schemas.py</h1>Killed 5 out of 20 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 79</h3><pre>--- app/schemas.py
-+++ app/schemas.py
-@@ -4,7 +4,7 @@
- 
- 
- class EventBase(BaseModel):
--    title: str = Field(min_length=3, max_length=100)
-+    title: str = Field(min_length=3, max_length=101)
-     description: str | None = None
-     date: date
-     location: str = Field(min_length=2, max_length=100)
-</pre><h3>Mutant 81</h3><pre>--- app/schemas.py
+<html><body><h1>app/schemas.py</h1>Killed 9 out of 20 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 81</h3><pre>--- app/schemas.py
 +++ app/schemas.py
 @@ -5,7 +5,7 @@
  
@@ -31,39 +20,6 @@
      date: date
      location: str = Field(min_length=2, max_length=100)
      capacity: int = Field(gt=0, le=10000)
-</pre><h3>Mutant 83</h3><pre>--- app/schemas.py
-+++ app/schemas.py
-@@ -7,7 +7,7 @@
-     title: str = Field(min_length=3, max_length=100)
-     description: str | None = None
-     date: date
--    location: str = Field(min_length=2, max_length=100)
-+    location: str = Field(min_length=3, max_length=100)
-     capacity: int = Field(gt=0, le=10000)
- 
- 
-</pre><h3>Mutant 84</h3><pre>--- app/schemas.py
-+++ app/schemas.py
-@@ -7,7 +7,7 @@
-     title: str = Field(min_length=3, max_length=100)
-     description: str | None = None
-     date: date
--    location: str = Field(min_length=2, max_length=100)
-+    location: str = Field(min_length=2, max_length=101)
-     capacity: int = Field(gt=0, le=10000)
- 
- 
-</pre><h3>Mutant 85</h3><pre>--- app/schemas.py
-+++ app/schemas.py
-@@ -7,7 +7,7 @@
-     title: str = Field(min_length=3, max_length=100)
-     description: str | None = None
-     date: date
--    location: str = Field(min_length=2, max_length=100)
-+    location: str = None
-     capacity: int = Field(gt=0, le=10000)
- 
- 
 </pre><h3>Mutant 89</h3><pre>--- app/schemas.py
 +++ app/schemas.py
 @@ -22,7 +22,7 @@
