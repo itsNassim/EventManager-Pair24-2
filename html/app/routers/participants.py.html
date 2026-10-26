@@ -1,0 +1,317 @@
+<html><body><h1>app/routers\participants.py</h1>Killed 0 out of 26 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 138</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -10,7 +10,7 @@
+ 
+ 
+ router = APIRouter(
+-    prefix="/participants",
++    prefix="XX/participantsXX",
+     tags=["Participants"]
+ )
+ 
+</pre><h3>Mutant 139</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -11,7 +11,7 @@
+ 
+ router = APIRouter(
+     prefix="/participants",
+-    tags=["Participants"]
++    tags=["XXParticipantsXX"]
+ )
+ 
+ 
+</pre><h3>Mutant 140</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -9,10 +9,7 @@
+ )
+ 
+ 
+-router = APIRouter(
+-    prefix="/participants",
+-    tags=["Participants"]
+-)
++router = None
+ 
+ 
+ @router.post(
+</pre><h3>Mutant 141</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -16,7 +16,7 @@
+ 
+ 
+ @router.post(
+-    "/",
++    "XX/XX",
+     response_model=ParticipantSchema,
+     status_code=status.HTTP_201_CREATED
+ )
+</pre><h3>Mutant 142</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -14,12 +14,6 @@
+     tags=["Participants"]
+ )
+ 
+-
+-@router.post(
+-    "/",
+-    response_model=ParticipantSchema,
+-    status_code=status.HTTP_201_CREATED
+-)
+ def create_participant(
+     participant: ParticipantCreate,
+     db: Session = Depends(get_db)
+</pre><h3>Mutant 143</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -26,7 +26,7 @@
+ ):
+     existing = (
+         db.query(Participant)
+-        .filter(Participant.email == participant.email)
++        .filter(Participant.email != participant.email)
+         .first()
+     )
+ 
+</pre><h3>Mutant 144</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -24,11 +24,7 @@
+     participant: ParticipantCreate,
+     db: Session = Depends(get_db)
+ ):
+-    existing = (
+-        db.query(Participant)
+-        .filter(Participant.email == participant.email)
+-        .first()
+-    )
++    existing = None
+ 
+     if existing:
+         raise HTTPException(
+</pre><h3>Mutant 145</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -32,7 +32,7 @@
+ 
+     if existing:
+         raise HTTPException(
+-            status_code=409,
++            status_code=410,
+             detail="Email is already registered."
+         )
+ 
+</pre><h3>Mutant 146</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -33,7 +33,7 @@
+     if existing:
+         raise HTTPException(
+             status_code=409,
+-            detail="Email is already registered."
++            detail="XXEmail is already registered.XX"
+         )
+ 
+     db_participant = Participant(
+</pre><h3>Mutant 147</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -36,9 +36,7 @@
+             detail="Email is already registered."
+         )
+ 
+-    db_participant = Participant(
+-        **participant.model_dump()
+-    )
++    db_participant = None
+ 
+     db.add(db_participant)
+     db.commit()
+</pre><h3>Mutant 148</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -48,7 +48,7 @@
+ 
+ 
+ @router.get(
+-    "/",
++    "XX/XX",
+     response_model=list[ParticipantSchema]
+ )
+ def list_participants(
+</pre><h3>Mutant 149</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -46,11 +46,6 @@
+ 
+     return db_participant
+ 
+-
+-@router.get(
+-    "/",
+-    response_model=list[ParticipantSchema]
+-)
+ def list_participants(
+     db: Session = Depends(get_db)
+ ):
+</pre><h3>Mutant 150</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -62,7 +62,7 @@
+ 
+ 
+ @router.get(
+-    "/{participant_id}",
++    "XX/{participant_id}XX",
+     response_model=ParticipantSchema
+ )
+ def get_participant(
+</pre><h3>Mutant 151</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -60,11 +60,6 @@
+         .all()
+     )
+ 
+-
+-@router.get(
+-    "/{participant_id}",
+-    response_model=ParticipantSchema
+-)
+ def get_participant(
+     participant_id: int,
+     db: Session = Depends(get_db)
+</pre><h3>Mutant 152</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -71,7 +71,7 @@
+ ):
+     participant = (
+         db.query(Participant)
+-        .filter(Participant.id == participant_id)
++        .filter(Participant.id != participant_id)
+         .first()
+     )
+ 
+</pre><h3>Mutant 153</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -69,11 +69,7 @@
+     participant_id: int,
+     db: Session = Depends(get_db)
+ ):
+-    participant = (
+-        db.query(Participant)
+-        .filter(Participant.id == participant_id)
+-        .first()
+-    )
++    participant = None
+ 
+     if not participant:
+         raise HTTPException(
+</pre><h3>Mutant 154</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -75,7 +75,7 @@
+         .first()
+     )
+ 
+-    if not participant:
++    if  participant:
+         raise HTTPException(
+             status_code=404,
+             detail="Participant not found."
+</pre><h3>Mutant 155</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -77,7 +77,7 @@
+ 
+     if not participant:
+         raise HTTPException(
+-            status_code=404,
++            status_code=405,
+             detail="Participant not found."
+         )
+ 
+</pre><h3>Mutant 156</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -78,7 +78,7 @@
+     if not participant:
+         raise HTTPException(
+             status_code=404,
+-            detail="Participant not found."
++            detail="XXParticipant not found.XX"
+         )
+ 
+     return participant
+</pre><h3>Mutant 157</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -85,7 +85,7 @@
+ 
+ 
+ @router.delete(
+-    "/{participant_id}",
++    "XX/{participant_id}XX",
+     status_code=status.HTTP_204_NO_CONTENT
+ )
+ def delete_participant(
+</pre><h3>Mutant 158</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -83,11 +83,6 @@
+ 
+     return participant
+ 
+-
+-@router.delete(
+-    "/{participant_id}",
+-    status_code=status.HTTP_204_NO_CONTENT
+-)
+ def delete_participant(
+     participant_id: int,
+     db: Session = Depends(get_db)
+</pre><h3>Mutant 159</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -94,7 +94,7 @@
+ ):
+     participant = (
+         db.query(Participant)
+-        .filter(Participant.id == participant_id)
++        .filter(Participant.id != participant_id)
+         .first()
+     )
+ 
+</pre><h3>Mutant 160</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -92,11 +92,7 @@
+     participant_id: int,
+     db: Session = Depends(get_db)
+ ):
+-    participant = (
+-        db.query(Participant)
+-        .filter(Participant.id == participant_id)
+-        .first()
+-    )
++    participant = None
+ 
+     if not participant:
+         raise HTTPException(
+</pre><h3>Mutant 161</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -98,7 +98,7 @@
+         .first()
+     )
+ 
+-    if not participant:
++    if  participant:
+         raise HTTPException(
+             status_code=404,
+             detail="Participant not found."
+</pre><h3>Mutant 162</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -100,7 +100,7 @@
+ 
+     if not participant:
+         raise HTTPException(
+-            status_code=404,
++            status_code=405,
+             detail="Participant not found."
+         )
+ 
+</pre><h3>Mutant 163</h3><pre>--- app/routers\participants.py
++++ app/routers\participants.py
+@@ -101,7 +101,7 @@
+     if not participant:
+         raise HTTPException(
+             status_code=404,
+-            detail="Participant not found."
++            detail="XXParticipant not found.XX"
+         )
+ 
+     db.delete(participant)
+</pre></body></html>

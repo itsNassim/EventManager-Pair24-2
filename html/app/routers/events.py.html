@@ -1,0 +1,172 @@
+<html><body><h1>app/routers\events.py</h1>Killed 25 out of 40 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 98</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -10,7 +10,7 @@
+ from typing import Optional
+ 
+ router = APIRouter(
+-    prefix="/events",
++    prefix="XX/eventsXX",
+     tags=["Events"]
+ )
+ 
+</pre><h3>Mutant 99</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -11,7 +11,7 @@
+ 
+ router = APIRouter(
+     prefix="/events",
+-    tags=["Events"]
++    tags=["XXEventsXX"]
+ )
+ 
+ 
+</pre><h3>Mutant 100</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -9,10 +9,7 @@
+ from ..schemas import EventCreate, EventUpdate
+ from typing import Optional
+ 
+-router = APIRouter(
+-    prefix="/events",
+-    tags=["Events"]
+-)
++router = None
+ 
+ 
+ @router.post(
+</pre><h3>Mutant 103</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -24,7 +24,7 @@
+     event: EventCreate,
+     db: Session = Depends(get_db)
+ ):
+-    if event.date < date.today():
++    if event.date <= date.today():
+         raise HTTPException(
+             status_code=400,
+             detail="Event date cannot be in the past."
+</pre><h3>Mutant 107</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -40,7 +40,7 @@
+ 
+ 
+ @router.get(
+-    "/",
++    "XX/XX",
+     response_model=list[EventSchema]
+ )
+ def list_events(
+</pre><h3>Mutant 108</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -38,11 +38,6 @@
+ 
+     return db_event
+ 
+-
+-@router.get(
+-    "/",
+-    response_model=list[EventSchema]
+-)
+ def list_events(
+     location: Optional[str] = None,
+     title: Optional[str] = None,
+</pre><h3>Mutant 120</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -72,7 +72,7 @@
+     if not event:
+         raise HTTPException(
+             status_code=404,
+-            detail="Event not found."
++            detail="XXEvent not found.XX"
+         )
+ 
+     return event
+</pre><h3>Mutant 126</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -95,7 +95,7 @@
+ 
+     if not event:
+         raise HTTPException(
+-            status_code=404,
++            status_code=405,
+             detail="Event not found."
+         )
+ 
+</pre><h3>Mutant 127</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -96,7 +96,7 @@
+     if not event:
+         raise HTTPException(
+             status_code=404,
+-            detail="Event not found."
++            detail="XXEvent not found.XX"
+         )
+ 
+     if event_data.date < date.today():
+</pre><h3>Mutant 128</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -99,7 +99,7 @@
+             detail="Event not found."
+         )
+ 
+-    if event_data.date < date.today():
++    if event_data.date <= date.today():
+         raise HTTPException(
+             status_code=400,
+             detail="Event date cannot be in the past."
+</pre><h3>Mutant 129</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -101,7 +101,7 @@
+ 
+     if event_data.date < date.today():
+         raise HTTPException(
+-            status_code=400,
++            status_code=401,
+             detail="Event date cannot be in the past."
+         )
+ 
+</pre><h3>Mutant 130</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -102,7 +102,7 @@
+     if event_data.date < date.today():
+         raise HTTPException(
+             status_code=400,
+-            detail="Event date cannot be in the past."
++            detail="XXEvent date cannot be in the past.XX"
+         )
+ 
+     for key, value in event_data.model_dump().items():
+</pre><h3>Mutant 136</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -130,7 +130,7 @@
+ 
+     if not event:
+         raise HTTPException(
+-            status_code=404,
++            status_code=405,
+             detail="Event not found."
+         )
+ 
+</pre><h3>Mutant 137</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -131,7 +131,7 @@
+     if not event:
+         raise HTTPException(
+             status_code=404,
+-            detail="Event not found."
++            detail="XXEvent not found.XX"
+         )
+ 
+     db.delete(event)
+</pre><h2>Suspicious</h2>Mutants that made the test suite take longer, but otherwise seemed ok<h3>Mutant 106</h3><pre>--- app/routers\events.py
++++ app/routers\events.py
+@@ -30,7 +30,7 @@
+             detail="Event date cannot be in the past."
+         )
+ 
+-    db_event = Event(**event.model_dump())
++    db_event = None
+ 
+     db.add(db_event)
+     db.commit()
+</pre></body></html>

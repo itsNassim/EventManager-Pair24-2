@@ -68,3 +68,48 @@ def test_empty_title_returns_all_events(prepopulated_event_store):
 def test_filter_by_location_is_case_insensitive(prepopulated_event_store):
     result = filter_events_by_location(prepopulated_event_store, "CoNsTaNtInE")
     assert len(result) == 2
+
+# ------------------------------------- tests for mutants ------------------------------------
+
+@pytest.mark.parametrize("capacity", [1, 10000])
+def test_capacity_valid_boundaries(capacity):
+    event = EventCreate(title="Demo", location="Oran", date="2030-01-01", capacity=capacity)
+    assert event.capacity == capacity
+
+@pytest.mark.parametrize("capacity", [0, 10001])
+def test_capacity_invalid_boundaries(capacity):
+    with pytest.raises(ValidationError):
+        EventCreate(title="Demo", location="Oran", date="2030-01-01", capacity=capacity)
+
+
+def test_title_length_3_is_valid():
+    event = EventCreate(title="AAA", location="Oran", date="2030-01-01", capacity=10)
+    assert event.title == "AAA"
+
+def test_title_length_2_raises_validation_error():
+    with pytest.raises(ValidationError):
+        EventCreate(title="AA", location="Oran", date="2030-01-01", capacity=10)
+
+def test_title_length_100_is_valid():
+    event = EventCreate(title="A" * 100, location="Oran", date="2030-01-01", capacity=10)
+    assert len(event.title) == 100
+
+def test_title_length_101_raises_validation_error():
+    with pytest.raises(ValidationError):
+        EventCreate(title="A" * 101, location="Oran", date="2030-01-01", capacity=10)
+
+def test_location_length_2_is_valid():
+    event = EventCreate(title="Demo", location="Or", date="2030-01-01", capacity=10)
+    assert event.location == "Or"
+
+def test_location_length_1_raises_validation_error():
+    with pytest.raises(ValidationError):
+        EventCreate(title="Demo", location="O", date="2030-01-01", capacity=10)
+
+def test_location_length_100_is_valid():
+    event = EventCreate(title="Demo", location="L" * 100, date="2030-01-01", capacity=10)
+    assert len(event.location) == 100
+
+def test_location_length_101_raises_validation_error():
+    with pytest.raises(ValidationError):
+        EventCreate(title="Demo", location="L" * 101, date="2030-01-01", capacity=10)

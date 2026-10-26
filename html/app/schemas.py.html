@@ -1,0 +1,160 @@
+<html><body><h1>app/schemas.py</h1>Killed 5 out of 20 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 79</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -4,7 +4,7 @@
+ 
+ 
+ class EventBase(BaseModel):
+-    title: str = Field(min_length=3, max_length=100)
++    title: str = Field(min_length=3, max_length=101)
+     description: str | None = None
+     date: date
+     location: str = Field(min_length=2, max_length=100)
+</pre><h3>Mutant 81</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -5,7 +5,7 @@
+ 
+ class EventBase(BaseModel):
+     title: str = Field(min_length=3, max_length=100)
+-    description: str | None = None
++    description: str & None = None
+     date: date
+     location: str = Field(min_length=2, max_length=100)
+     capacity: int = Field(gt=0, le=10000)
+</pre><h3>Mutant 82</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -5,7 +5,7 @@
+ 
+ class EventBase(BaseModel):
+     title: str = Field(min_length=3, max_length=100)
+-    description: str | None = None
++    description: str | None = ""
+     date: date
+     location: str = Field(min_length=2, max_length=100)
+     capacity: int = Field(gt=0, le=10000)
+</pre><h3>Mutant 83</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -7,7 +7,7 @@
+     title: str = Field(min_length=3, max_length=100)
+     description: str | None = None
+     date: date
+-    location: str = Field(min_length=2, max_length=100)
++    location: str = Field(min_length=3, max_length=100)
+     capacity: int = Field(gt=0, le=10000)
+ 
+ 
+</pre><h3>Mutant 84</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -7,7 +7,7 @@
+     title: str = Field(min_length=3, max_length=100)
+     description: str | None = None
+     date: date
+-    location: str = Field(min_length=2, max_length=100)
++    location: str = Field(min_length=2, max_length=101)
+     capacity: int = Field(gt=0, le=10000)
+ 
+ 
+</pre><h3>Mutant 85</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -7,7 +7,7 @@
+     title: str = Field(min_length=3, max_length=100)
+     description: str | None = None
+     date: date
+-    location: str = Field(min_length=2, max_length=100)
++    location: str = None
+     capacity: int = Field(gt=0, le=10000)
+ 
+ 
+</pre><h3>Mutant 89</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -22,7 +22,7 @@
+ class Event(EventBase):
+     id: int
+ 
+-    model_config = ConfigDict(from_attributes=True)
++    model_config = ConfigDict(from_attributes=False)
+ 
+ 
+ class ParticipantBase(BaseModel):
+</pre><h3>Mutant 90</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -22,7 +22,7 @@
+ class Event(EventBase):
+     id: int
+ 
+-    model_config = ConfigDict(from_attributes=True)
++    model_config = None
+ 
+ 
+ class ParticipantBase(BaseModel):
+</pre><h3>Mutant 91</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -26,7 +26,7 @@
+ 
+ 
+ class ParticipantBase(BaseModel):
+-    name: str = Field(min_length=2, max_length=100)
++    name: str = Field(min_length=3, max_length=100)
+     email: EmailStr
+ 
+ 
+</pre><h3>Mutant 92</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -26,7 +26,7 @@
+ 
+ 
+ class ParticipantBase(BaseModel):
+-    name: str = Field(min_length=2, max_length=100)
++    name: str = Field(min_length=2, max_length=101)
+     email: EmailStr
+ 
+ 
+</pre><h3>Mutant 93</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -26,7 +26,7 @@
+ 
+ 
+ class ParticipantBase(BaseModel):
+-    name: str = Field(min_length=2, max_length=100)
++    name: str = None
+     email: EmailStr
+ 
+ 
+</pre><h3>Mutant 94</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -37,7 +37,7 @@
+ class Participant(ParticipantBase):
+     id: int
+ 
+-    model_config = ConfigDict(from_attributes=True)
++    model_config = ConfigDict(from_attributes=False)
+ 
+ 
+ class Registration(BaseModel):
+</pre><h3>Mutant 95</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -37,7 +37,7 @@
+ class Participant(ParticipantBase):
+     id: int
+ 
+-    model_config = ConfigDict(from_attributes=True)
++    model_config = None
+ 
+ 
+ class Registration(BaseModel):
+</pre><h3>Mutant 96</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -45,4 +45,4 @@
+     event_id: int
+     participant_id: int
+ 
+-    model_config = ConfigDict(from_attributes=True)
++    model_config = ConfigDict(from_attributes=False)
+</pre><h3>Mutant 97</h3><pre>--- app/schemas.py
++++ app/schemas.py
+@@ -45,4 +45,4 @@
+     event_id: int
+     participant_id: int
+ 
+-    model_config = ConfigDict(from_attributes=True)
++    model_config = None
+</pre></body></html>

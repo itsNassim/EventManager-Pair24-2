@@ -1,0 +1,88 @@
+<html><body><h1>app/main.py</h1>Killed 0 out of 8 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 11</h3><pre>--- app/main.py
++++ app/main.py
+@@ -5,7 +5,7 @@
+ 
+ 
+ app = FastAPI(
+-    title="Event Manager API",
++    title="XXEvent Manager APIXX",
+     description="A teaching project for Git, Docker and CI/CD",
+     version="1.0.0"
+ )
+</pre><h3>Mutant 12</h3><pre>--- app/main.py
++++ app/main.py
+@@ -6,7 +6,7 @@
+ 
+ app = FastAPI(
+     title="Event Manager API",
+-    description="A teaching project for Git, Docker and CI/CD",
++    description="XXA teaching project for Git, Docker and CI/CDXX",
+     version="1.0.0"
+ )
+ 
+</pre><h3>Mutant 13</h3><pre>--- app/main.py
++++ app/main.py
+@@ -7,7 +7,7 @@
+ app = FastAPI(
+     title="Event Manager API",
+     description="A teaching project for Git, Docker and CI/CD",
+-    version="1.0.0"
++    version="XX1.0.0XX"
+ )
+ 
+ 
+</pre><h3>Mutant 14</h3><pre>--- app/main.py
++++ app/main.py
+@@ -4,11 +4,7 @@
+ from .routers import events, participants, registrations
+ 
+ 
+-app = FastAPI(
+-    title="Event Manager API",
+-    description="A teaching project for Git, Docker and CI/CD",
+-    version="1.0.0"
+-)
++app = None
+ 
+ 
+ Base.metadata.create_all(bind=engine)
+</pre><h3>Mutant 15</h3><pre>--- app/main.py
++++ app/main.py
+@@ -18,7 +18,7 @@
+ app.include_router(participants.router)
+ app.include_router(registrations.router)
+ 
+-@app.get("/")
++@app.get("XX/XX")
+ def root():
+     return {
+         "message": "Welcome to Event Manager API"
+</pre><h3>Mutant 16</h3><pre>--- app/main.py
++++ app/main.py
+@@ -18,7 +18,6 @@
+ app.include_router(participants.router)
+ app.include_router(registrations.router)
+ 
+-@app.get("/")
+ def root():
+     return {
+         "message": "Welcome to Event Manager API"
+</pre><h3>Mutant 17</h3><pre>--- app/main.py
++++ app/main.py
+@@ -21,5 +21,5 @@
+ @app.get("/")
+ def root():
+     return {
+-        "message": "Welcome to Event Manager API"
++        "XXmessageXX": "Welcome to Event Manager API"
+     }
+</pre><h3>Mutant 18</h3><pre>--- app/main.py
++++ app/main.py
+@@ -21,5 +21,5 @@
+ @app.get("/")
+ def root():
+     return {
+-        "message": "Welcome to Event Manager API"
++        "message": "XXWelcome to Event Manager APIXX"
+     }
+</pre></body></html>

@@ -98,3 +98,9 @@ def test_delete_event_then_get_returns_404(client):
     created = client.post("/events/", json=EVENT).json()
     assert client.delete(f"/events/{created['id']}").status_code == 204
     assert client.get(f"/events/{created['id']}").status_code == 404
+
+
+def test_list_events_title_filter_mixed_case(client):
+    client.post("/events/", json=EVENT)
+    response = client.get("/events/", params={"title": "PyThOn"})
+    assert len(response.json()) == 1

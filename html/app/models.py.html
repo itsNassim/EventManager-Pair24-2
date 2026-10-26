@@ -1,0 +1,586 @@
+<html><body><h1>app/models.py</h1>Killed 8 out of 59 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 20</h3><pre>--- app/models.py
++++ app/models.py
+@@ -5,7 +5,7 @@
+ 
+ 
+ class Event(Base):
+-    __tablename__ = "events"
++    __tablename__ = None
+ 
+     id = Column(Integer, primary_key=True, index=True)
+     title = Column(String(100), nullable=False)
+</pre><h3>Mutant 21</h3><pre>--- app/models.py
++++ app/models.py
+@@ -7,7 +7,7 @@
+ class Event(Base):
+     __tablename__ = "events"
+ 
+-    id = Column(Integer, primary_key=True, index=True)
++    id = Column(Integer, primary_key=False, index=True)
+     title = Column(String(100), nullable=False)
+     description = Column(Text, nullable=True)
+     date = Column(Date, nullable=False)
+</pre><h3>Mutant 22</h3><pre>--- app/models.py
++++ app/models.py
+@@ -7,7 +7,7 @@
+ class Event(Base):
+     __tablename__ = "events"
+ 
+-    id = Column(Integer, primary_key=True, index=True)
++    id = Column(Integer, primary_key=True, index=False)
+     title = Column(String(100), nullable=False)
+     description = Column(Text, nullable=True)
+     date = Column(Date, nullable=False)
+</pre><h3>Mutant 23</h3><pre>--- app/models.py
++++ app/models.py
+@@ -7,7 +7,7 @@
+ class Event(Base):
+     __tablename__ = "events"
+ 
+-    id = Column(Integer, primary_key=True, index=True)
++    id = None
+     title = Column(String(100), nullable=False)
+     description = Column(Text, nullable=True)
+     date = Column(Date, nullable=False)
+</pre><h3>Mutant 24</h3><pre>--- app/models.py
++++ app/models.py
+@@ -8,7 +8,7 @@
+     __tablename__ = "events"
+ 
+     id = Column(Integer, primary_key=True, index=True)
+-    title = Column(String(100), nullable=False)
++    title = Column(String(101), nullable=False)
+     description = Column(Text, nullable=True)
+     date = Column(Date, nullable=False)
+     location = Column(String(100), nullable=False)
+</pre><h3>Mutant 25</h3><pre>--- app/models.py
++++ app/models.py
+@@ -8,7 +8,7 @@
+     __tablename__ = "events"
+ 
+     id = Column(Integer, primary_key=True, index=True)
+-    title = Column(String(100), nullable=False)
++    title = Column(String(100), nullable=True)
+     description = Column(Text, nullable=True)
+     date = Column(Date, nullable=False)
+     location = Column(String(100), nullable=False)
+</pre><h3>Mutant 27</h3><pre>--- app/models.py
++++ app/models.py
+@@ -9,7 +9,7 @@
+ 
+     id = Column(Integer, primary_key=True, index=True)
+     title = Column(String(100), nullable=False)
+-    description = Column(Text, nullable=True)
++    description = Column(Text, nullable=False)
+     date = Column(Date, nullable=False)
+     location = Column(String(100), nullable=False)
+     capacity = Column(Integer, nullable=False)
+</pre><h3>Mutant 28</h3><pre>--- app/models.py
++++ app/models.py
+@@ -9,7 +9,7 @@
+ 
+     id = Column(Integer, primary_key=True, index=True)
+     title = Column(String(100), nullable=False)
+-    description = Column(Text, nullable=True)
++    description = None
+     date = Column(Date, nullable=False)
+     location = Column(String(100), nullable=False)
+     capacity = Column(Integer, nullable=False)
+</pre><h3>Mutant 29</h3><pre>--- app/models.py
++++ app/models.py
+@@ -10,7 +10,7 @@
+     id = Column(Integer, primary_key=True, index=True)
+     title = Column(String(100), nullable=False)
+     description = Column(Text, nullable=True)
+-    date = Column(Date, nullable=False)
++    date = Column(Date, nullable=True)
+     location = Column(String(100), nullable=False)
+     capacity = Column(Integer, nullable=False)
+ 
+</pre><h3>Mutant 31</h3><pre>--- app/models.py
++++ app/models.py
+@@ -11,7 +11,7 @@
+     title = Column(String(100), nullable=False)
+     description = Column(Text, nullable=True)
+     date = Column(Date, nullable=False)
+-    location = Column(String(100), nullable=False)
++    location = Column(String(101), nullable=False)
+     capacity = Column(Integer, nullable=False)
+ 
+     registrations = relationship(
+</pre><h3>Mutant 32</h3><pre>--- app/models.py
++++ app/models.py
+@@ -11,7 +11,7 @@
+     title = Column(String(100), nullable=False)
+     description = Column(Text, nullable=True)
+     date = Column(Date, nullable=False)
+-    location = Column(String(100), nullable=False)
++    location = Column(String(100), nullable=True)
+     capacity = Column(Integer, nullable=False)
+ 
+     registrations = relationship(
+</pre><h3>Mutant 34</h3><pre>--- app/models.py
++++ app/models.py
+@@ -12,7 +12,7 @@
+     description = Column(Text, nullable=True)
+     date = Column(Date, nullable=False)
+     location = Column(String(100), nullable=False)
+-    capacity = Column(Integer, nullable=False)
++    capacity = Column(Integer, nullable=True)
+ 
+     registrations = relationship(
+         "Registration",
+</pre><h3>Mutant 38</h3><pre>--- app/models.py
++++ app/models.py
+@@ -17,7 +17,7 @@
+     registrations = relationship(
+         "Registration",
+         back_populates="event",
+-        cascade="all, delete-orphan"
++        cascade="XXall, delete-orphanXX"
+     )
+ 
+ 
+</pre><h3>Mutant 41</h3><pre>--- app/models.py
++++ app/models.py
+@@ -22,7 +22,7 @@
+ 
+ 
+ class Participant(Base):
+-    __tablename__ = "participants"
++    __tablename__ = None
+ 
+     id = Column(Integer, primary_key=True, index=True)
+     name = Column(String(100), nullable=False)
+</pre><h3>Mutant 42</h3><pre>--- app/models.py
++++ app/models.py
+@@ -24,7 +24,7 @@
+ class Participant(Base):
+     __tablename__ = "participants"
+ 
+-    id = Column(Integer, primary_key=True, index=True)
++    id = Column(Integer, primary_key=False, index=True)
+     name = Column(String(100), nullable=False)
+     email = Column(String(150), nullable=False, unique=True, index=True)
+ 
+</pre><h3>Mutant 43</h3><pre>--- app/models.py
++++ app/models.py
+@@ -24,7 +24,7 @@
+ class Participant(Base):
+     __tablename__ = "participants"
+ 
+-    id = Column(Integer, primary_key=True, index=True)
++    id = Column(Integer, primary_key=True, index=False)
+     name = Column(String(100), nullable=False)
+     email = Column(String(150), nullable=False, unique=True, index=True)
+ 
+</pre><h3>Mutant 44</h3><pre>--- app/models.py
++++ app/models.py
+@@ -24,7 +24,7 @@
+ class Participant(Base):
+     __tablename__ = "participants"
+ 
+-    id = Column(Integer, primary_key=True, index=True)
++    id = None
+     name = Column(String(100), nullable=False)
+     email = Column(String(150), nullable=False, unique=True, index=True)
+ 
+</pre><h3>Mutant 45</h3><pre>--- app/models.py
++++ app/models.py
+@@ -25,7 +25,7 @@
+     __tablename__ = "participants"
+ 
+     id = Column(Integer, primary_key=True, index=True)
+-    name = Column(String(100), nullable=False)
++    name = Column(String(101), nullable=False)
+     email = Column(String(150), nullable=False, unique=True, index=True)
+ 
+     registrations = relationship(
+</pre><h3>Mutant 46</h3><pre>--- app/models.py
++++ app/models.py
+@@ -25,7 +25,7 @@
+     __tablename__ = "participants"
+ 
+     id = Column(Integer, primary_key=True, index=True)
+-    name = Column(String(100), nullable=False)
++    name = Column(String(100), nullable=True)
+     email = Column(String(150), nullable=False, unique=True, index=True)
+ 
+     registrations = relationship(
+</pre><h3>Mutant 47</h3><pre>--- app/models.py
++++ app/models.py
+@@ -25,7 +25,7 @@
+     __tablename__ = "participants"
+ 
+     id = Column(Integer, primary_key=True, index=True)
+-    name = Column(String(100), nullable=False)
++    name = None
+     email = Column(String(150), nullable=False, unique=True, index=True)
+ 
+     registrations = relationship(
+</pre><h3>Mutant 48</h3><pre>--- app/models.py
++++ app/models.py
+@@ -26,7 +26,7 @@
+ 
+     id = Column(Integer, primary_key=True, index=True)
+     name = Column(String(100), nullable=False)
+-    email = Column(String(150), nullable=False, unique=True, index=True)
++    email = Column(String(151), nullable=False, unique=True, index=True)
+ 
+     registrations = relationship(
+         "Registration",
+</pre><h3>Mutant 49</h3><pre>--- app/models.py
++++ app/models.py
+@@ -26,7 +26,7 @@
+ 
+     id = Column(Integer, primary_key=True, index=True)
+     name = Column(String(100), nullable=False)
+-    email = Column(String(150), nullable=False, unique=True, index=True)
++    email = Column(String(150), nullable=True, unique=True, index=True)
+ 
+     registrations = relationship(
+         "Registration",
+</pre><h3>Mutant 50</h3><pre>--- app/models.py
++++ app/models.py
+@@ -26,7 +26,7 @@
+ 
+     id = Column(Integer, primary_key=True, index=True)
+     name = Column(String(100), nullable=False)
+-    email = Column(String(150), nullable=False, unique=True, index=True)
++    email = Column(String(150), nullable=False, unique=False, index=True)
+ 
+     registrations = relationship(
+         "Registration",
+</pre><h3>Mutant 51</h3><pre>--- app/models.py
++++ app/models.py
+@@ -26,7 +26,7 @@
+ 
+     id = Column(Integer, primary_key=True, index=True)
+     name = Column(String(100), nullable=False)
+-    email = Column(String(150), nullable=False, unique=True, index=True)
++    email = Column(String(150), nullable=False, unique=True, index=False)
+ 
+     registrations = relationship(
+         "Registration",
+</pre><h3>Mutant 52</h3><pre>--- app/models.py
++++ app/models.py
+@@ -26,7 +26,7 @@
+ 
+     id = Column(Integer, primary_key=True, index=True)
+     name = Column(String(100), nullable=False)
+-    email = Column(String(150), nullable=False, unique=True, index=True)
++    email = None
+ 
+     registrations = relationship(
+         "Registration",
+</pre><h3>Mutant 55</h3><pre>--- app/models.py
++++ app/models.py
+@@ -31,7 +31,7 @@
+     registrations = relationship(
+         "Registration",
+         back_populates="participant",
+-        cascade="all, delete-orphan"
++        cascade="XXall, delete-orphanXX"
+     )
+ 
+ 
+</pre><h3>Mutant 57</h3><pre>--- app/models.py
++++ app/models.py
+@@ -36,7 +36,7 @@
+ 
+ 
+ class Registration(Base):
+-    __tablename__ = "registrations"
++    __tablename__ = "XXregistrationsXX"
+ 
+     id = Column(Integer, primary_key=True, index=True)
+ 
+</pre><h3>Mutant 58</h3><pre>--- app/models.py
++++ app/models.py
+@@ -36,7 +36,7 @@
+ 
+ 
+ class Registration(Base):
+-    __tablename__ = "registrations"
++    __tablename__ = None
+ 
+     id = Column(Integer, primary_key=True, index=True)
+ 
+</pre><h3>Mutant 59</h3><pre>--- app/models.py
++++ app/models.py
+@@ -38,7 +38,7 @@
+ class Registration(Base):
+     __tablename__ = "registrations"
+ 
+-    id = Column(Integer, primary_key=True, index=True)
++    id = Column(Integer, primary_key=False, index=True)
+ 
+     event_id = Column(
+         Integer,
+</pre><h3>Mutant 60</h3><pre>--- app/models.py
++++ app/models.py
+@@ -38,7 +38,7 @@
+ class Registration(Base):
+     __tablename__ = "registrations"
+ 
+-    id = Column(Integer, primary_key=True, index=True)
++    id = Column(Integer, primary_key=True, index=False)
+ 
+     event_id = Column(
+         Integer,
+</pre><h3>Mutant 61</h3><pre>--- app/models.py
++++ app/models.py
+@@ -38,7 +38,7 @@
+ class Registration(Base):
+     __tablename__ = "registrations"
+ 
+-    id = Column(Integer, primary_key=True, index=True)
++    id = None
+ 
+     event_id = Column(
+         Integer,
+</pre><h3>Mutant 63</h3><pre>--- app/models.py
++++ app/models.py
+@@ -43,7 +43,7 @@
+     event_id = Column(
+         Integer,
+         ForeignKey("events.id"),
+-        nullable=False
++        nullable=True
+     )
+ 
+     participant_id = Column(
+</pre><h3>Mutant 64</h3><pre>--- app/models.py
++++ app/models.py
+@@ -40,11 +40,7 @@
+ 
+     id = Column(Integer, primary_key=True, index=True)
+ 
+-    event_id = Column(
+-        Integer,
+-        ForeignKey("events.id"),
+-        nullable=False
+-    )
++    event_id = None
+ 
+     participant_id = Column(
+         Integer,
+</pre><h3>Mutant 66</h3><pre>--- app/models.py
++++ app/models.py
+@@ -49,7 +49,7 @@
+     participant_id = Column(
+         Integer,
+         ForeignKey("participants.id"),
+-        nullable=False
++        nullable=True
+     )
+ 
+     event = relationship(
+</pre><h3>Mutant 67</h3><pre>--- app/models.py
++++ app/models.py
+@@ -46,11 +46,7 @@
+         nullable=False
+     )
+ 
+-    participant_id = Column(
+-        Integer,
+-        ForeignKey("participants.id"),
+-        nullable=False
+-    )
++    participant_id = None
+ 
+     event = relationship(
+         "Event",
+</pre><h3>Mutant 74</h3><pre>--- app/models.py
++++ app/models.py
+@@ -64,7 +64,7 @@
+ 
+     __table_args__ = (
+         UniqueConstraint(
+-            "event_id",
++            "XXevent_idXX",
+             "participant_id",
+             name="uq_event_participant"
+         ),
+</pre><h3>Mutant 75</h3><pre>--- app/models.py
++++ app/models.py
+@@ -65,7 +65,7 @@
+     __table_args__ = (
+         UniqueConstraint(
+             "event_id",
+-            "participant_id",
++            "XXparticipant_idXX",
+             name="uq_event_participant"
+         ),
+     )
+</pre><h3>Mutant 76</h3><pre>--- app/models.py
++++ app/models.py
+@@ -66,6 +66,6 @@
+         UniqueConstraint(
+             "event_id",
+             "participant_id",
+-            name="uq_event_participant"
++            name="XXuq_event_participantXX"
+         ),
+     )
+</pre><h3>Mutant 77</h3><pre>--- app/models.py
++++ app/models.py
+@@ -62,10 +62,4 @@
+         back_populates="registrations"
+     )
+ 
+-    __table_args__ = (
+-        UniqueConstraint(
+-            "event_id",
+-            "participant_id",
+-            name="uq_event_participant"
+-        ),
+-    )
++    __table_args__ = None
+</pre><h2>Suspicious</h2>Mutants that made the test suite take longer, but otherwise seemed ok<h3>Mutant 36</h3><pre>--- app/models.py
++++ app/models.py
+@@ -15,7 +15,7 @@
+     capacity = Column(Integer, nullable=False)
+ 
+     registrations = relationship(
+-        "Registration",
++        "XXRegistrationXX",
+         back_populates="event",
+         cascade="all, delete-orphan"
+     )
+</pre><h3>Mutant 37</h3><pre>--- app/models.py
++++ app/models.py
+@@ -16,7 +16,7 @@
+ 
+     registrations = relationship(
+         "Registration",
+-        back_populates="event",
++        back_populates="XXeventXX",
+         cascade="all, delete-orphan"
+     )
+ 
+</pre><h3>Mutant 39</h3><pre>--- app/models.py
++++ app/models.py
+@@ -14,11 +14,7 @@
+     location = Column(String(100), nullable=False)
+     capacity = Column(Integer, nullable=False)
+ 
+-    registrations = relationship(
+-        "Registration",
+-        back_populates="event",
+-        cascade="all, delete-orphan"
+-    )
++    registrations = None
+ 
+ 
+ class Participant(Base):
+</pre><h3>Mutant 53</h3><pre>--- app/models.py
++++ app/models.py
+@@ -29,7 +29,7 @@
+     email = Column(String(150), nullable=False, unique=True, index=True)
+ 
+     registrations = relationship(
+-        "Registration",
++        "XXRegistrationXX",
+         back_populates="participant",
+         cascade="all, delete-orphan"
+     )
+</pre><h3>Mutant 54</h3><pre>--- app/models.py
++++ app/models.py
+@@ -30,7 +30,7 @@
+ 
+     registrations = relationship(
+         "Registration",
+-        back_populates="participant",
++        back_populates="XXparticipantXX",
+         cascade="all, delete-orphan"
+     )
+ 
+</pre><h3>Mutant 56</h3><pre>--- app/models.py
++++ app/models.py
+@@ -28,11 +28,7 @@
+     name = Column(String(100), nullable=False)
+     email = Column(String(150), nullable=False, unique=True, index=True)
+ 
+-    registrations = relationship(
+-        "Registration",
+-        back_populates="participant",
+-        cascade="all, delete-orphan"
+-    )
++    registrations = None
+ 
+ 
+ class Registration(Base):
+</pre><h3>Mutant 68</h3><pre>--- app/models.py
++++ app/models.py
+@@ -53,7 +53,7 @@
+     )
+ 
+     event = relationship(
+-        "Event",
++        "XXEventXX",
+         back_populates="registrations"
+     )
+ 
+</pre><h3>Mutant 69</h3><pre>--- app/models.py
++++ app/models.py
+@@ -54,7 +54,7 @@
+ 
+     event = relationship(
+         "Event",
+-        back_populates="registrations"
++        back_populates="XXregistrationsXX"
+     )
+ 
+     participant = relationship(
+</pre><h3>Mutant 70</h3><pre>--- app/models.py
++++ app/models.py
+@@ -52,10 +52,7 @@
+         nullable=False
+     )
+ 
+-    event = relationship(
+-        "Event",
+-        back_populates="registrations"
+-    )
++    event = None
+ 
+     participant = relationship(
+         "Participant",
+</pre><h3>Mutant 71</h3><pre>--- app/models.py
++++ app/models.py
+@@ -58,7 +58,7 @@
+     )
+ 
+     participant = relationship(
+-        "Participant",
++        "XXParticipantXX",
+         back_populates="registrations"
+     )
+ 
+</pre><h3>Mutant 72</h3><pre>--- app/models.py
++++ app/models.py
+@@ -59,7 +59,7 @@
+ 
+     participant = relationship(
+         "Participant",
+-        back_populates="registrations"
++        back_populates="XXregistrationsXX"
+     )
+ 
+     __table_args__ = (
+</pre><h3>Mutant 73</h3><pre>--- app/models.py
++++ app/models.py
+@@ -57,10 +57,7 @@
+         back_populates="registrations"
+     )
+ 
+-    participant = relationship(
+-        "Participant",
+-        back_populates="registrations"
+-    )
++    participant = None
+ 
+     __table_args__ = (
+         UniqueConstraint(
+</pre></body></html>
