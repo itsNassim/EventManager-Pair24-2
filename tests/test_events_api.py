@@ -103,4 +103,43 @@ def test_delete_event_then_get_returns_404(client):
 def test_list_events_title_filter_mixed_case(client):
     client.post("/events/", json=EVENT)
     response = client.get("/events/", params={"title": "PyThOn"})
-    assert len(response.json()) == 1
+    assert response.status_code == 200
+    assert [event["title"] for event in response.json()] == ["Python Meetup"]
+
+
+def test_get_missing_event_detail_message(client):
+    response = client.get("/events/999")
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Event not found."
+
+
+def test_update_missing_event_returns_404(client):
+    response = client.put("/events/999", json=EVENT)
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Event not found."
+
+
+def test_update_event_to_past_date_returns_400(client):
+    created = client.post("/events/", json=EVENT).json()
+    response = client.put(f"/events/{created['id']}", json={**EVENT, "date": "2000-01-01"})
+    assert response.status_code == 400
+    assert response.json()["detail"] == "Event date cannot be in the past."
+
+
+def test_update_event_to_today_is_accepted(client):
+    from datetime import date
+    created = client.post("/events/", json=EVENT).json()
+    response = client.put(f"/events/{created['id']}", json={**EVENT, "date": date.today().isoformat()})
+    assert response.status_code == 200
+
+
+def test_delete_missing_event_returns_404(client):
+    response = client.delete("/events/999")
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Event not found."
+
+
+def test_create_event_today_is_accepted(client):
+    from datetime import date
+    response = client.post("/events/", json={**EVENT, "date": date.today().isoformat()})
+    assert response.status_code == 201
